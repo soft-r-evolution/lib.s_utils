@@ -1,5 +1,11 @@
 # lib.s_utils
 
+![Python package](https://github.com/soft-r-evolution/lib.s_utils/workflows/Python%20package/badge.svg)
+
+This library is used to provided some common operations for most of the projects. Such as:
+
+* Get safely a key in a dictionary
+
 ## Installation
 
 ### Installing virtual-env
