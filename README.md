@@ -33,14 +33,22 @@ source venv/bin/activate
 ```
 python -m pip install --upgrade pip
 pip install -r requirements.txt
-pip install flake8
+pip install flake8 black
 pip install pytest pytest-cov
 ```
 
 ## Run the linter
 
+Run black to help to fix linter issues. Warning must be done is separate commits for QA.
+
 ```
-flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+black s_utils
+black tests
+```
+
+```
+flake8 s_utils --count --select=E9,F63,F7,F82 --show-source --statistics
+flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics
 ```
 
 ## Run the tests
