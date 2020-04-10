@@ -9,7 +9,7 @@ def get_key(content, key, logger = None):
         if logger: logger.warning('Invalid dictionary detected')
         return None
 
-    if not key in dict_content:
+    if not key in content:
         if logger: logger.warning('key {} was not found in the dictionary'.format(key))
         return None
     else:
