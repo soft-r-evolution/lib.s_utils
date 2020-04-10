@@ -39,4 +39,4 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest-cov
-        pytest --cov=s_utils --cov-report=html tests
+        pytest --cov=s_utils --cov-report=html --cov-report=term tests

@@ -67,6 +67,6 @@ flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --sta
 ## Run the tests
 
 ```
-pytest --cov=s_utils --cov-report=html tests
+pytest --cov=s_utils --cov-report=html --cov-report=term tests
 xdg-open htmlcov/index.html
 ```
