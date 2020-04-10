@@ -37,7 +37,9 @@ pip install flake8 black
 pip install pytest pytest-cov
 ```
 
-## Run the linter
+## Linter
+
+### Help formatting the code with black
 
 Run black to help to fix linter issues. Warning must be done is separate commits for QA.
 
@@ -46,9 +48,20 @@ black s_utils
 black tests
 ```
 
+### Run the linter
+
+Stop the build if Python syntax errors or undefined names
+
 ```
 flake8 s_utils --count --select=E9,F63,F7,F82 --show-source --statistics
 flake8 tests --count --select=E9,F63,F7,F82 --show-source --statistics
+```
+
+Treats all errors as warnings
+
+```
+flake8 s_utils --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+flake8 tests --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 ```
 
 ## Run the tests
