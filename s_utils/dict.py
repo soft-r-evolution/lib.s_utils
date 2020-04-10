@@ -11,7 +11,7 @@ def get_key(content, key, logger=None):
             logger.warning("Invalid dictionary detected")
         return None
 
-    if not key in content:
+    if key not in content:
         if logger:
             logger.warning("key {} was not found in the dictionary".format(key))
         return None
