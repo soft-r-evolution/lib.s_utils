@@ -23,5 +23,6 @@ def setup_custom_logger(mode=LOG_MODE_PROD):
         logger.setLevel(logging.ERROR)
     return logger
 
+
 def get_logger():
     return logging.getLogger(__name__)

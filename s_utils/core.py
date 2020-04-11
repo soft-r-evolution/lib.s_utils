@@ -6,6 +6,7 @@ try:
 except NameError:
     logger = setup_custom_logger(LOG_MODE_DEBUG)
 
+
 def is_no_log(**kwargs):
     """ Return true is no_log value = True or 1 """
     if "no_log" in kwargs:
@@ -13,6 +14,7 @@ def is_no_log(**kwargs):
         if no_log or no_log == 1:
             return True
     return False
+
 
 def s_decorator(f):
     def new_func(*args, **kwargs):
