@@ -1,26 +1,40 @@
 from time import time
-from s_utils.log import g_s_log_extra, g_logger
+from s_utils.log import *
 
+try:
+    logger
+except NameError:
+    logger = setup_custom_logger(LOG_MODE_DEBUG)
+
+def is_no_log(**kwargs):
+    """ Return true is no_log value = True or 1 """
+    if "no_log" in kwargs:
+        no_log = kwargs["no_log"]
+        if no_log or no_log == 1:
+            return True
+    return False
 
 def s_decorator(f):
     def new_func(*args, **kwargs):
-        if g_s_log_extra:
+        logger = get_logger()
+        no_log = is_no_log(**kwargs)
+        if not no_log:
             start_time = time()
-            g_logger.info(
+            logger.debug(
                 "Entering function {}, args: {}, kwargs: {}...".format(
                     f.__name__, args, kwargs
                 )
             )
 
-        if "no_log" in kwargs:
+        if no_log:
             kwargs["logger"] = None
         else:
-            kwargs["logger"] = g_logger
+            kwargs["logger"] = logger
         result = f(*args, **kwargs)
 
-        if g_s_log_extra:
+        if not no_log:
             end_time = time()
-            g_logger.info("Exited {} ({} s)".format(f.__name__, end_time - start_time))
+            logger.debug("Exited {} ({} s)".format(f.__name__, end_time - start_time))
 
         return result
 

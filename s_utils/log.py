@@ -5,7 +5,7 @@ LOG_MODE_DEV = "dev"
 LOG_MODE_PROD = "prod"
 
 
-def setup_custom_logger(name="root", mode=LOG_MODE_PROD, s_log_extra=True):
+def setup_custom_logger(mode=LOG_MODE_PROD):
     formatter = logging.Formatter(
         fmt="%(asctime)s - %(levelname)s - %(module)s - %(message)s"
     )
@@ -13,7 +13,7 @@ def setup_custom_logger(name="root", mode=LOG_MODE_PROD, s_log_extra=True):
     handler = logging.StreamHandler()
     handler.setFormatter(formatter)
 
-    logger = logging.getLogger(name)
+    logger = logging.getLogger(__name__)
     logger.addHandler(handler)
     if mode == LOG_MODE_DEBUG:
         logger.setLevel(logging.DEBUG)
@@ -21,15 +21,7 @@ def setup_custom_logger(name="root", mode=LOG_MODE_PROD, s_log_extra=True):
         logger.setLevel(logging.INFO)
     else:
         logger.setLevel(logging.ERROR)
-
     return logger
 
-
-try:
-    g_logger
-except NameError:
-    g_logger = None
-
-if not g_logger:
-    g_s_log_extra = True
-    g_logger = setup_custom_logger(__name__, LOG_MODE_DEBUG)
+def get_logger():
+    return logging.getLogger(__name__)
