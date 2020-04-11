@@ -1,7 +1,14 @@
-def get_key(content, key, logger=None):
+from s_utils.core import s_decorator
+
+
+@s_decorator
+def get_key(content, key, **kwargs):
     """Check is a key value is present or not in a dictionary.
        if logger is set the value will be logged in info is present
        and warning if not present."""
+    print(kwargs)
+    logger = kwargs["logger"]
+
     if not content:
         if logger:
             logger.warning("Empty dictionary detected")
